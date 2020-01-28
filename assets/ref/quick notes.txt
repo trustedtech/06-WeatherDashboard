@@ -1,0 +1,35 @@
+Search by input
+
+Query OpenWeather API
+
+Display the following under current weather conditions:
+  * City
+  * Date
+  * Icon image (visual representation of weather conditions)
+  * Temperature
+  * Humidity
+  * Wind speed
+  * UV index
+
+Prior searches listed as history, repeatable
+
+5-day forecast below the current forecast, each day displaying:
+  * Date
+  * Icon image (visual representation of weather conditions)
+  * Temperature
+  * Humidity
+
+Use icons to represent weather conditions
+
+Load last searched city on page reload
+
+BONUS:  Use Geolocation API to add "Current Location" initial landing page
+
+
+sunny             <i class="fas fa-sun"></i>
+partly sunny      <i class="fas fa-cloud-sun"></i>
+cloudy            <i class="fas fa-cloud"></i>
+rainy             <i class="fas fa-cloud-showers-heavy"></i>
+scattered storm   <i class="fas fa-cloud-sun-rain"></i>
+high temps        <i class="fas fa-temperature-high"></i>
+low temps         <i class="fas fa-temperature-low"></i>

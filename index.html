@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Dashboard</title>
+
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Titillium+Web&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    
+    <header>
+        <h1 id="jumboTitle">Weather Dashboard</h1>
+    </header>
+
+    <section class="container-fluid">
+        <div class="row">
+
+            <aside id="uiControl" class="col-md-4">
+                <div class="input-group mb-3">               
+                    <input id="cityKeyword" type="text" class="form-control" aria-label="Search City" aria-describedby="searchBtn" placeholder="Search by city name">
+                    <div class="input-group-append">
+                      <button id="searchBtn" class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>                  
+                </div>
+                <button id="mylocationBtn" class="btn btn-outline-primary quick-search" type="button"><i class="fas fa-search-location mr-2"></i>Current Location</button>
+                <button id="recent-1" class="btn btn-outline-primary quick-search" type="button"><i class="fas fa-map-marker-alt mr-3"></i>Recent Search</button>
+            </aside>
+
+            <div id="uiDisplay" class="col-md-8 container">
+
+                <div class="col-12" class="">
+                    <h2 id="cityHeading">Orlando</h2>
+                    <h5>Temperature: <span id="cityTemp">80 F</span></h5>
+                    <h5>Humidity: <span id="cityHumid">48%</span></h5>
+                    <h5>Wind Speed: <span id="cityWind">3 mph</span></h5>
+                    <h5>UV Index: <span id="cityUVi">8.78</span></h5>
+                </div>
+                <hr>
+                <div class="col-12">
+                    <h4>Extended Forecast</h4>                
+                    <div class="row justify-content-between">
+                        <div class="col-md-2 ex-fcast-block">
+
+                        </div>
+                    
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+ <script src="./assets/js/script.js"></script>
+
+</body>
+</html>

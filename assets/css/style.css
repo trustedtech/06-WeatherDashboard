@@ -1,0 +1,97 @@
+body {
+    font-family: "Nunito Sans", sans-serif;
+    color: darkslategray;
+}
+
+header {
+    background-color: dodgerblue;
+    color: whitesmoke;
+    padding: 30px;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-weight: bolder;
+    margin-bottom: 25px;
+}
+
+hr {
+    border: 2px solid #edf2f8;
+    margin: 50px 0;
+}
+
+section {
+    
+}
+
+.indent {
+    margin-right
+}
+ 
+#jumboTitle {
+     font-size: 3em;
+     font-weight: bold;
+     text-shadow: -1px -1px 2px #888273;
+     margin: 0;
+}
+
+.ex-fcast-block {
+     border-radius: 8px;
+}
+
+#uiControl, #uiDisplay {
+    padding: 3%;
+}
+
+#uiControl {
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+#uiControl input {
+    /* max-width: 300px; */
+    margin-left: auto;
+}
+
+#uiDisplay {
+    
+}
+
+#uiDisplay span {
+    font-weight: bold;
+}
+
+#cityHeading {
+
+}
+
+#searchBtn {
+
+}
+
+#mylocationBtn {
+
+}
+.quick-search {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-outline-primary {
+    color: cornflowerblue;
+    border-color: cornflowerblue;
+}
+
+@media only screen and (max-width: 767px) {
+    #uiControl, #uiDisplay {
+        padding: 15px;
+    }
+    #uiControl {
+        height: auto;
+        padding-top: 30px;
+    }
+    #uiControl input {
+        max-width: 100vw;
+        margin: 0;
+    }
+} 
