@@ -19,6 +19,8 @@ $('button').click(function(){
         console.log(city);
         getCurrentWeather(city);
         getFutureWeather(city);
+
+        //Adds this search to local storage and creates a Recent Search button
     }
 
 });
@@ -39,7 +41,7 @@ function getCurrentWeather(keyword) {
     $('#cityHeading').text(response.name);
     $('#weatherIcon').attr('src', iconURL + response.weather[0].icon + icon2x);
     $('#weatherDesc').text(response.weather[0].description);
-    $('#cityTemp').text(response.main.temp + " F");
+    $('#cityTemp').text(Math.round(response.main.temp) + "\xB0F");
     $('#cityHumid').text(response.main.humidity + "%");
     $('#cityWind').text(response.wind.speed + " mph");
 
@@ -83,8 +85,8 @@ function getFutureWeather(keyword) {
                 //console.log(timeblock.dt_txt);
                 var fDate = $('<p/>').text(moment(timeblock.dt_txt).format("M/D/YY"));
                 var fIcon = $('<img/>').attr('src', iconURL + timeblock.weather[0].icon + icon2x);
-                var fTemp = $('<p/>').text("Temp: " + timeblock.main.temp);
-                var fHumid = $('<p/>').text("Humidity: " + timeblock.main.humidity);
+                var fTemp = $('<p/>').html("Temp: <span>" + Math.round(timeblock.main.temp) + "\xB0F</span>");
+                var fHumid = $('<p/>').html("Humidity: <span>" + timeblock.main.humidity + "%</span>");
                 var fBlock = $('<div/>').addClass('col-md-2 ex-fcast-block');
                 $(fBlock).append(fDate, fIcon, fTemp, fHumid);
                 $('#extendedFcasts').append(fBlock);
