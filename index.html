@@ -23,7 +23,7 @@
 
             <aside id="uiControl" class="col-md-4">
                 <div class="input-group mb-3">               
-                    <input id="cityKeyword" type="text" class="form-control" aria-label="Search City" aria-describedby="searchBtn" placeholder="Search by city name">
+                    <input id="cityInput" type="text" class="form-control" aria-label="Search City" aria-describedby="searchBtn" placeholder="Enter a city name to search...">
                     <div class="input-group-append">
                       <button id="searchBtn" class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
                     </div>                  
@@ -35,50 +35,15 @@
             <div id="uiDisplay" class="col-md-8 container">
 
                 <div class="col-12" class="">
-                    <h2 id="cityHeading">Orlando</h2>
-                    <h5>Temperature: <span id="cityTemp">80 F</span></h5>
-                    <h5>Humidity: <span id="cityHumid">48%</span></h5>
-                    <h5>Wind Speed: <span id="cityWind">3 mph</span></h5>
-                    <h5>UV Index: <span id="cityUVi">8.78</span></h5>
+                    <h2 id="cityHeading"></h2><img id="weatherIcon" src=""/><p id="weatherDesc"></p>
+                    <h5>Temperature: <span id="cityTemp"></span></h5>
+                    <h5>Humidity: <span id="cityHumid"></span></h5>
+                    <h5>Wind Speed: <span id="cityWind"></span></h5>
+                    <h5>UV Index: <span id="cityUVi"></span></h5>
                 </div>
                 <hr>
-                <div class="col-12">
-                    <h4>Extended Forecast</h4>                
-                    <div class="col-md-2 ex-fcast-block">
-                        <p>1/28/2020</p>
-                        <i class="fas fa-cloud-sun-rain big-icon"></i>
-                        <p>Temp: <span>48%</span></p>
-                        <p>Humidity: <span>48%</span></p>
-                    </div>
-                    <div class="col-md-2 ex-fcast-block">
-                        <p>1/28/2020</p>
-                        <i class="fas fa-cloud-sun-rain big-icon"></i>
-                        <p>Temp: <span>48%</span></p>
-                        <p>Humidity: <span>48%</span></p>
-
-                    </div>
-                    <div class="col-md-2 ex-fcast-block">
-                        <p>1/28/2020</p>
-                        <i class="fas fa-cloud-sun-rain big-icon"></i>
-                        <p>Temp: <span>48%</span></p>
-                        <p>Humidity: <span>48%</span></p>
-
-                    </div>
-                    <div class="col-md-2 ex-fcast-block">
-                        <p>1/28/2020</p>
-                        <i class="fas fa-cloud-sun-rain big-icon"></i>
-                        <p>Temp: <span>48%</span></p>
-                        <p>Humidity: <span>48%</span></p>
-
-                    </div>
-                    <div class="col-md-2 ex-fcast-block">
-                        <p>1/28/2020</p>
-                        <i class="fas fa-cloud-sun-rain big-icon"></i>
-                        <p>Temp: <span>48%</span></p>
-                        <p>Humidity: <span>48%</span></p>
-
-                    </div>
-
+                <h4 class="ml-3">Extended Forecast</h4>  
+                <div id="extendedFcasts" class="col-12 container">
                 </div>
 
             </div>
@@ -91,3 +56,5 @@
 
 </body>
 </html>
+
+
