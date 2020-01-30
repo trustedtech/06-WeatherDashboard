@@ -13,6 +13,10 @@ var omitForecast = moment().format("YYYY-MM-DD" + " 12:00:00");
 //Listen for any button clicks
 $('button').click(function(){
 
+    //Clear old weather details from the UI
+    $('#extendedFcasts').empty();
+
+
     //Identify and handle Search Button click
     if ($(this).is('#searchBtn')) {
         var city = $.trim($('#cityInput').val());
@@ -45,7 +49,7 @@ function getCurrentWeather(keyword) {
     $('#cityHumid').text(response.main.humidity + "%");
     $('#cityWind').text(response.wind.speed + " mph");
 
-        //Using coordinate data from the prior query, we must now do a separate query for the UV index
+        //Using coordinate data from the prior query, do a separate query for the UV index
         var lat = response.coord.lat;
         var lon = response.coord.lon;
         //console.log(lat + " , " + lon);
@@ -71,18 +75,20 @@ function getFutureWeather(keyword) {
 
     queryURL = forecastURL + keyword + unitsParam + apiKey;
 
+    //Queries OpenWeather API for future weather data
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
     console.log(response);
 
+        //Loop through the timeblocks to find the ones that match a noon timestamp on future dates
         response.list.forEach(function(timeblock, index){
 
             var dateText = timeblock.dt_txt;
             if ( dateText.includes('12:00:00') && dateText !== omitForecast ) {
-                
-                //console.log(timeblock.dt_txt);
+
+                //Update the UI with data retrieved from the API
                 var fDate = $('<p/>').text(moment(timeblock.dt_txt).format("M/D/YY"));
                 var fIcon = $('<img/>').attr('src', iconURL + timeblock.weather[0].icon + icon2x);
                 var fTemp = $('<p/>').html("Temp: <span>" + Math.round(timeblock.main.temp) + "\xB0F</span>");
