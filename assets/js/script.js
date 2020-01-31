@@ -120,8 +120,10 @@ function getFutureWeather(keyword) {
 
 function storeSearches(city){
 
-    //console.log("This is the city to store: " + city);
+
     if ( city !== null ){
+
+        //Grab any locally stored searches, then updates that store with the current search
         var storedSearches = JSON.parse(localStorage.getItem("storedSearches"));
 
         if ( storedSearches === null ) {
@@ -146,7 +148,9 @@ function storeSearches(city){
 
 function retrieveSearches(){
 
+    //Grabs any locally stored searches, then updates the UI with those search options
     var storedSearches = JSON.parse(localStorage.getItem("storedSearches"));
+
     if ( storedSearches !== null ) {
         storedSearches.forEach(function(city, index){
             var recent = $('<button/>').addClass("btn btn-outline-primary quick-search").attr('data-city', city).html("<i class='fas fa-map-marker-alt mr-3'></i>" + city);
@@ -159,5 +163,4 @@ function retrieveSearches(){
     console.log(city);
     getCurrentWeather(city);
     getFutureWeather(city);
-    
 }
