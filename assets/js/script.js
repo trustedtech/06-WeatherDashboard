@@ -6,9 +6,13 @@ var iconURL = "http://openweathermap.org/img/wn/";
 var icon2x = "@2x.png";
 var apiKey = "&APPID=2b853bacb586a6ba502bc5abb5c5ba1b";
 var unitsParam = "&units=imperial";
+var searchHistory = [];
 
 //Create references to help us navigate through extended forecasts
 var omitForecast = moment().format("YYYY-MM-DD" + " 12:00:00");
+
+//Retrieve any saved searches and add them to the UI
+retrieveSearches();
 
 //Listen for any button clicks
 $('button').click(function(){
@@ -39,7 +43,6 @@ function getCurrentWeather(keyword) {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-    //console.log(response);
 
     //Update the UI with data retrieved from the API
     $('#cityHeading').text(response.name);
@@ -52,7 +55,7 @@ function getCurrentWeather(keyword) {
         //Using coordinate data from the prior query, do a separate query for the UV index
         var lat = response.coord.lat;
         var lon = response.coord.lon;
-        //console.log(lat + " , " + lon);
+        console.log("Coords: " + lat + lon);
 
         uviqueryURL = uviURL + lat + "&lon=" + lon + apiKey;
 
@@ -60,12 +63,14 @@ function getCurrentWeather(keyword) {
             url: uviqueryURL,
             method: "GET"
         }).then(function(uvidata) {
-            //console.log(uvidata);
+            console.log(uvidata);
 
             //Update the UI with the UV index data
             $('#cityUVi').text(uvidata.value);
 
         });
+
+        storeSearches(response.name);
 
     });
 
@@ -102,4 +107,40 @@ function getFutureWeather(keyword) {
 
     });
 
+}
+
+function storeSearches(city){
+
+    //console.log("This is the city to store: " + city);
+    if ( city !== null ){
+        var storedSearches = JSON.parse(localStorage.getItem("storedSearches"));
+
+        if ( storedSearches === null ) {
+            storedSearches = [];
+            storedSearches.push(city);
+            var lastSearch = $('<button/>').addClass("btn btn-outline-primary quick-search").attr('data-city', city).html("<i class='fas fa-map-marker-alt mr-3'></i>" + city);
+            $('#uiControl').append(lastSearch);
+        }
+        else if ( !(storedSearches.includes(city))) {
+            storedSearches.push(city);
+            var lastSearch = $('<button/>').addClass("btn btn-outline-primary quick-search").attr('data-city', city).html("<i class='fas fa-map-marker-alt mr-3'></i>" + city);
+            $('#uiControl').append(lastSearch);
+        }
+
+        localStorage.setItem("storedSearches", JSON.stringify(storedSearches));
+    }  
+    else {
+        return;
+    }
+    
+}
+
+function retrieveSearches(){
+    var storedSearches = JSON.parse(localStorage.getItem("storedSearches"));
+    if ( storedSearches !== null ) {
+        storedSearches.forEach(function(city, index){
+            var recent = $('<button/>').addClass("btn btn-outline-primary quick-search").attr('data-city', city).html("<i class='fas fa-map-marker-alt mr-3'></i>" + city);
+            $('#uiControl').append(recent);
+        })
+    }
 }
