@@ -16,19 +16,26 @@ retrieveSearches();
 
 //Listen for any button clicks
 $('button').click(function(){
+    clickedBtn = this;
 
     //Clear old weather details from the UI
     $('#extendedFcasts').empty();
 
 
     //Identify and handle Search Button click
-    if ($(this).is('#searchBtn')) {
+    if ($(clickedBtn).is('#searchBtn')) {
         var city = $.trim($('#cityInput').val());
         console.log(city);
         getCurrentWeather(city);
         getFutureWeather(city);
+    }
 
-        //Adds this search to local storage and creates a Recent Search button
+    //Identify and handle Recent Search button click
+    if ($(clickedBtn).hasClass('quick-search')) {
+        var city = $(clickedBtn).attr('data-city');
+        console.log(city);
+        getCurrentWeather(city);
+        getFutureWeather(city);
     }
 
 });
@@ -73,6 +80,8 @@ function getCurrentWeather(keyword) {
         storeSearches(response.name);
 
     });
+
+    $('#cityInput').val("");
 
 }
 
