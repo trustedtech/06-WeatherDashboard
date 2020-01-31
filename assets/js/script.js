@@ -145,6 +145,7 @@ function storeSearches(city){
 }
 
 function retrieveSearches(){
+
     var storedSearches = JSON.parse(localStorage.getItem("storedSearches"));
     if ( storedSearches !== null ) {
         storedSearches.forEach(function(city, index){
@@ -152,4 +153,11 @@ function retrieveSearches(){
             $('#uiControl').append(recent);
         })
     }
+
+    var defaultSearch = $('.quick-search').last();
+    var city = $(defaultSearch).attr('data-city');
+    console.log(city);
+    getCurrentWeather(city);
+    getFutureWeather(city);
+    
 }
